@@ -18,7 +18,7 @@ What do we have so far?
               
               
 What is missing?
-1) Something is wrong with the SVD_DWT function. It`s working but the images doesn`t look like the ones from the article
+1) Something is wrong with the SVD_DWT function. It`s working but the images don`t look like the ones from the article
 2) I couldn`t understand very well SVE so I think the function is wrong... need to read more about it and fix it. 
 3) The gaussian graphs are not very presentable..will try to make them better. 
 4) Make the written report and user`s guide   :(
