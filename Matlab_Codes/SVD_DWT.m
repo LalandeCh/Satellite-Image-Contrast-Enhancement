@@ -13,7 +13,7 @@ function [ contrast_enhanced_img ] = SVD_DWT( low_contrast_img )
 
 
 %% OBTAINING THE LL SUBBAND OF ORIGINAL IMAGE
-[LL_orig, HL_orig, LH_orig, HH_orig, bands_orig] = Subbands (low_contrast_img);
+[LL_orig, HL_orig, LH_orig, HH_orig, Subbands_orig] = Subbands (low_contrast_img);
 
 %% PERFORMING SINGULAR VALUE DECOMPOSITION (SVD) ON THE LL SUBBAND OF ORIGINAL IMAGE
 [U_orig, S_orig, V_orig] = svd (LL_orig); 
@@ -22,7 +22,7 @@ function [ contrast_enhanced_img ] = SVD_DWT( low_contrast_img )
 ghe_img = histeq(low_contrast_img, 256); 
 
 %% OBTAINING LL SUBBAND OF EQUALIZED IMAGE
-[LL_ghe, HL_ghe, LH_ghe, HH_ghe, bands_ghe] = Subbands (ghe_img);
+[LL_ghe, HL_ghe, LH_ghe, HH_ghe, Subbands_ghe] = Subbands (ghe_img);
 
 %% PERFORMING SVD ON LL SUBBAND OF EQUALIZED IMAGE
 [U_ghe, S_ghe, V_ghe] = svd(LL_ghe); 
@@ -34,10 +34,10 @@ Z = max(S_ghe) / max(S_orig); % dividing the max singular value of equalized img
 new_sigma = Z * S_orig; %updating the new singular value matrix
 
 %% OBAINING NEW LL SUBBAND
-new_LL = abs( U_orig * new_sigma * V_orig' ); % obtaining the new LL subband
+new_LL = U_orig * new_sigma * V_orig' ; % obtaining the new LL subband
 
 %% RECONSTRUCT NEW ENHANCED IMAGE BY IDWT 
- contrast_enhanced_img = idwt2 (new_LL, HL_orig, LH_orig, HH_orig, 'db1'); %constructing the new enhaced image
+ contrast_enhanced_img = idwt2 (new_LL, HL_orig, LH_orig, HH_orig, 'db1'); %constructing the new enhanced image
 
 end
 

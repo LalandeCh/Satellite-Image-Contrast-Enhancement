@@ -12,8 +12,15 @@ image = double(image);
 %% PERFORMING SVD ON THE ORIGINAL IMAGE
 [U, S, V] = svd(image); 
 
+%% CREATING OF AN IMAGE OF SAME DIMENSIONS OF MEAN 128
+[X, Y] = size(image);
+image_mean_128 = ones(X, Y) * 128;
+
+%% PERFORMING SVD ON THE IMAGE OF MEAN 128
+[U_mean_128, S_mean_128, V_mean_128] = svd(image_mean_128); 
+
 %% OBTAINING THE ZETA COEFFICIENT
-zeta = max(S)/max(image);   % zeta coefficient= max singular value of sigma / max value of image
+zeta = max(image_mean_128)/max(image);   % zeta coefficient= max singular value of sigma / max value of image
 
 %% CALCULATING NEW SIGMA
 new_sigma = zeta * S; %updating the new singular value matrix(sigma)
