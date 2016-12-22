@@ -14,11 +14,14 @@ What do we have so far?
               Subbands (made by me)
               SVE      (made by me)
               BPDHE    (download from internet)
-              **The other functions were already provided from Matlab (histeq, adapthisteq)
+              The other functions were already provided from Matlab (histeq, adapthisteq)
               
               
 What is missing?
 1) Something is wrong with the SVD_DWT function. It`s working but the images don`t look like the ones from the article
 2) I couldn`t understand very well SVE so I think the function is wrong... need to read more about it and fix it. 
-3) The gaussian graphs are not very presentable..will try to make them better. 
+      The function has been re-implemented using the method given in references
+3) The gaussian graphs are not very presentable..will try to make them better.
+      The Mean and the Standar Deviation have been added in the title of each histogram.
+      The graphs aren't the same as the graphs provided in the paper. Should show the results using the same representation ?
 4) Make the written report and user`s guide   :(
